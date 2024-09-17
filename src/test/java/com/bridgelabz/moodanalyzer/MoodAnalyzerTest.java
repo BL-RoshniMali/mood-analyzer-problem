@@ -9,7 +9,6 @@ public class MoodAnalyzerTest {
     // 1) whatIsGivenToYou_whatActionShouldTake_whatOutputItWillReturn()
     // 2) whatIsGivenToYou_whatOutputItWillReturn()
 
-
     // Test Case 1.1: Given "I am in Sad Mood" message, Should Return "Sad"
     @Test
     public void givenSadMoodMessage_ShouldReturnSadMood(){
@@ -23,6 +22,22 @@ public class MoodAnalyzerTest {
     public void givenAnyMoodMessage_ShouldReturnHappy(){
         MoodAnalyser analyser = new MoodAnalyser();
         String mood = analyser.analyseMood("I am in any mood.");
+        Assertions.assertEquals("Happy", mood);
+    }
+
+    // Repeat Test Case: 1.1
+    @Test
+    public void givenSadMoodMessageWithConstructor_ShouldReturnSadMood(){
+        MoodAnalyser analyser = new MoodAnalyser("I am in sad mood today");
+        String mood = analyser.analyseMoodWithConstructor();
+        Assertions.assertEquals("Sad", mood);
+    }
+
+    // Repeat Test Case: 1.2
+    @Test
+    public void givenAnyMoodMessageWithConstructor_ShouldReturnHappyMood(){
+        MoodAnalyser analyser = new MoodAnalyser("I am in any mood.");
+        String mood = analyser.analyseMoodWithConstructor();
         Assertions.assertEquals("Happy", mood);
     }
 }
