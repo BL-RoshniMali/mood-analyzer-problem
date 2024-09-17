@@ -5,7 +5,7 @@ public class MoodAnalyser {
     // Method to analyze the mood based on the message
     public String analyseMood(String message) {
         // Check if the message contains the word "Sad" (case-sensitive as per the test case)
-        if (message.contains("Sad")) {
+        if (message.toLowerCase().contains("sad")) {
             return "Sad";
         } else {
             return "Happy";
