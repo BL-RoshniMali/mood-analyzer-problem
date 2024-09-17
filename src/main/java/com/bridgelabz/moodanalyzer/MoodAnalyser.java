@@ -23,19 +23,31 @@ public class MoodAnalyser {
         }
     }
 
-    public String analyseMoodWithConstructor() {
-        // Check if the message contains the word "Sad" (case-sensitive as per the test case)
-        if (message.toLowerCase().contains("sad")) {
-            return "Sad";
-        } else {
-            return "Happy";
+    public String analyseMoodWithConstructor() throws MoodAnalyzerException {
+        try {
+            if(message == null){
+                throw new MoodAnalyzerException("Invalid Mood: Null Message provided");
+            }
+            // Check if the message contains the word "Sad" (case-sensitive as per the test case)
+            if (message.toLowerCase().contains("sad")) {
+                return "Sad";
+            } else {
+                return "Happy";
+            }
         }
+        catch (NullPointerException e){
+            throw new MoodAnalyzerException(("Invalid Mood: Null Message provided"));
+        }
+
     }
 
-    public static void main(String[] args) {
-        // Create a MoodAnalyser object
-        MoodAnalyser moodAnalyser = new MoodAnalyser("I am feeling so sad today!");
-        // Output the mood
-        System.out.println("Mood: " + moodAnalyser.analyseMoodWithConstructor());
+    public static void main(String[] args) throws MoodAnalyzerException {
+        try {
+            // Example: Create MoodAnalyser object with a null message
+            MoodAnalyser moodAnalyser = new MoodAnalyser(null);
+            System.out.println("Mood: " + moodAnalyser.analyseMoodWithConstructor()); // Expected: Exception
+        } catch (MoodAnalyzerException e) {
+            System.out.println(e.getMessage()); // Expected: "Invalid mood: Null message provided"
+        }
     }
 }

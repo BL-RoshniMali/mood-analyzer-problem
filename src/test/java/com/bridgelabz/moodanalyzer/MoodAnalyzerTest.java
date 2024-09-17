@@ -27,7 +27,7 @@ public class MoodAnalyzerTest {
 
     // Repeat Test Case: 1.1
     @Test
-    public void givenSadMoodMessageWithConstructor_ShouldReturnSadMood(){
+    public void givenSadMoodMessageWithConstructor_ShouldReturnSadMood() throws MoodAnalyzerException {
         MoodAnalyser analyser = new MoodAnalyser("I am in sad mood today");
         String mood = analyser.analyseMoodWithConstructor();
         Assertions.assertEquals("Sad", mood);
@@ -35,9 +35,11 @@ public class MoodAnalyzerTest {
 
     // Repeat Test Case: 1.2
     @Test
-    public void givenAnyMoodMessageWithConstructor_ShouldReturnHappyMood(){
+    public void givenAnyMoodMessageWithConstructor_ShouldReturnHappyMood() throws MoodAnalyzerException {
         MoodAnalyser analyser = new MoodAnalyser("I am in any mood.");
         String mood = analyser.analyseMoodWithConstructor();
         Assertions.assertEquals("Happy", mood);
     }
+
+
 }
